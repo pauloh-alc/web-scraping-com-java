@@ -19,11 +19,9 @@ public class WebScrapingService {
 		return documentHTML;
 	}
 	
-	public void scrapHTML() throws IOException {
+	public List<URL> scrapHTML() throws IOException {
 		Document documentHTML = connectToThePage();
 		String id = "parent-fieldname-text";
-		
-		// <div> contem tags <p> que por sua vez possuem os atributos href's, contendo os links para os PDF's
 		
 		Element divContainer = documentHTML.getElementById(id);
 		
@@ -31,7 +29,7 @@ public class WebScrapingService {
 		String class_ = "callout";
 		tagsP = divContainer.getElementsByClass(class_);
 		
-		System.out.println(tagsP);
+		List<URL> urls = new ArrayList<>();
 		
 		tagsP.forEach(p -> {
 			Element tagA = p.getElementsByTag("a").get(0);
@@ -40,7 +38,11 @@ public class WebScrapingService {
 			URL url = new URL();
 			url.setName(getFileName(href));
 			url.setHref(href);
+			
+			urls.add(url);
 		});
+		
+		return urls;
 	}
 
 	private String getFileName(String href) {
