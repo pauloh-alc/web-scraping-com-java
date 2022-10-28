@@ -1,6 +1,6 @@
 package br.com.paulo.entity;
 
-public class URL {
+public class URLEntity {
 	
 	private String name;
 	private String href;
