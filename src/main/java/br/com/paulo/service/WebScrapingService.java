@@ -8,6 +8,8 @@ import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 
+import br.com.paulo.entity.URL;
+
 public class WebScrapingService {
 	
 	final static String URL = "https://www.gov.br/ans/pt-br/assuntos/consumidor/o-que-o-seu-plano-de-saude-deve-cobrir-1/o-que-e-o-rol-de-procedimentos-e-evento-em-saude";
@@ -30,6 +32,15 @@ public class WebScrapingService {
 		tagsP = divContainer.getElementsByClass(class_);
 		
 		System.out.println(tagsP);
+		
+		tagsP.forEach(p -> {
+			URL url = new URL();
+		
+			Element tagA = p.getElementsByTag("a").get(0);
+			
+			String href = tagA.attr("href"); 
+			System.out.println(href);
+		});
 	}
 
 }
