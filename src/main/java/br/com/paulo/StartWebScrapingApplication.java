@@ -14,7 +14,7 @@ public class StartWebScrapingApplication {
 		SpringApplication.run(StartWebScrapingApplication.class, args);	
 		
 		WebScrapingService service = new WebScrapingService();
-		System.out.println(service.connectToThePage());
+		service.scrapHTML();
 	}
 
 }
