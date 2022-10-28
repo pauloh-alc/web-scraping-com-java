@@ -34,13 +34,18 @@ public class WebScrapingService {
 		System.out.println(tagsP);
 		
 		tagsP.forEach(p -> {
-			URL url = new URL();
-		
 			Element tagA = p.getElementsByTag("a").get(0);
-			
 			String href = tagA.attr("href"); 
-			System.out.println(href);
+			
+			URL url = new URL();
+			url.setName(getFileName(href));
+			url.setHref(href);
 		});
+	}
+
+	private String getFileName(String href) {
+		String[] slices = href.split("/");
+		return slices[slices.length-1];
 	}
 
 }
