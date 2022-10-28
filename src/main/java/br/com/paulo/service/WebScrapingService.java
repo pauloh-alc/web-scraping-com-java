@@ -2,7 +2,9 @@ package br.com.paulo.service;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
@@ -42,12 +44,20 @@ public class WebScrapingService {
 			urls.add(url);
 		});
 		
-		return urls;
+		return selectSpecificURLFiles(urls);
 	}
 
 	private String getFileName(String href) {
 		String[] slices = href.split("/");
 		return slices[slices.length-1];
 	}
-
+	
+	private List<URL> selectSpecificURLFiles(List<URL> urls) {
+		return urls.stream().filter(url -> {
+			if (url.getName().contains("Anexo")) {
+				return true;
+			}
+			return false;
+		}).collect(Collectors.toList());
+	}
 }
