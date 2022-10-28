@@ -25,9 +25,15 @@ public class StartWebScrapingApplication {
 	
 	@Bean
 	public CommandLineRunner init() {
-		return args -> {			
-			List<URLEntity> urls = service.scrapHTML();
+		return args -> {
+			// URL fornecida no teste1:
+			final String URL = "https://www.gov.br/ans/pt-br/assuntos/consumidor/o-que-o-seu-plano-de-saude-deve-cobrir-1/o-que-e-o-rol-de-procedimentos-e-evento-em-saude";
+			
+			// Lista de URL's para download
+			List<URLEntity> urls = service.scrapHTML(URL);
+			
 			urls.forEach(System.out::println);
+			
 			DownloadFileService downloadFileService = new DownloadFileService();
 			downloadFileService.download(urls);
 		};

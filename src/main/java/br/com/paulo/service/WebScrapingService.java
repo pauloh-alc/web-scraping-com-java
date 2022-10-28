@@ -15,15 +15,13 @@ import br.com.paulo.entity.URLEntity;
 @Service
 public class WebScrapingService {
 	
-	final String URL = "https://www.gov.br/ans/pt-br/assuntos/consumidor/o-que-o-seu-plano-de-saude-deve-cobrir-1/o-que-e-o-rol-de-procedimentos-e-evento-em-saude";
-	
-	private Document connectToThePage() throws IOException {
+	private Document connectToThePage(final String URL) throws IOException {
 		Document documentHTML = Jsoup.connect(URL).get();
 		return documentHTML;
 	}
 	
-	public List<URLEntity> scrapHTML() throws IOException {
-		Document documentHTML = connectToThePage();
+	public List<URLEntity> scrapHTML(final String URL) throws IOException {
+		Document documentHTML = connectToThePage(URL);
 		String id = "parent-fieldname-text";
 		
 		Element divContainer = documentHTML.getElementById(id);
