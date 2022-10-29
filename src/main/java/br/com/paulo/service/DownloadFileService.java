@@ -12,14 +12,14 @@ import br.com.paulo.entity.URLEntity;
 
 public class DownloadFileService {
 	
-	public void download(List<URLEntity> urls) {
+	public void download(List<URLEntity> urls) throws Exception {
 		
 		urls.forEach(elementURL -> {
 			URL url;
 			try {
 				
 				url = new URL(elementURL.getHref());
-				File file = new File("/tmp/" + elementURL.getName());
+				File file = new File("/tmp/teste/" + elementURL.getName());
 				FileUtils.copyURLToFile(url, file);
 				
 			} catch (MalformedURLException e1) {
@@ -28,5 +28,6 @@ public class DownloadFileService {
 				e2.printStackTrace();
 			}
 		});
+		
 	}
 }
