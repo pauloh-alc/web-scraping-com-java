@@ -9,7 +9,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 
 import br.com.paulo.entity.URLEntity;
-import br.com.paulo.service.DirectoryZiper;
+import br.com.paulo.service.DirectoryZiperService;
 import br.com.paulo.service.DownloadFileService;
 import br.com.paulo.service.WebScrapingService;
 
@@ -38,7 +38,7 @@ public class StartWebScrapingApplication {
 			// 3. Realizando downloads dos arquivos pedidos por meio das URL's "raspadas" na Web
 			downloadFileService.download(urls);
 			
-			DirectoryZiper folderZiper = new DirectoryZiper();
+			DirectoryZiperService folderZiper = new DirectoryZiperService();
 			
 			// Diretorio com os arquivos baixados............................................
 			String dir = "/tmp/dir";
@@ -48,7 +48,7 @@ public class StartWebScrapingApplication {
 			// 4. Zipando. 
 			folderZiper.zipDirectory(dir, zipFile);
 			
-			System.out.println("Os arquivos foram solicitados e zipados com sucesso!");
+			System.out.println("Os arquivos solicitados, foram baixados e zipados com sucesso!");
 		};
 	}
 }

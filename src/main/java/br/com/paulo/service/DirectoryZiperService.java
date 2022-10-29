@@ -6,7 +6,7 @@ import java.io.FileOutputStream;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipOutputStream;
 
-public class DirectoryZiper {
+public class DirectoryZiperService {
 
 	public void zipDirectory(String srcDirectory, String zipFile) throws Exception {
 		FileOutputStream fos = new FileOutputStream(zipFile);
