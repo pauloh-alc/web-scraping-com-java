@@ -40,11 +40,15 @@ public class StartWebScrapingApplication {
 			
 			DirectoryZiper folderZiper = new DirectoryZiper();
 			
+			// Diretorio com os arquivos baixados............................................
 			String dir = "/tmp/dir";
+			// Nome do arquivo que vai ser gerado, contendo todos os arquivos baixados.......
 			String zipFile = "/tmp/zipado.zip";
 			
 			// 4. Zipando. 
 			folderZiper.zipDirectory(dir, zipFile);
+			
+			System.out.println("Os arquivos foram solicitados e zipados com sucesso!");
 		};
 	}
 }

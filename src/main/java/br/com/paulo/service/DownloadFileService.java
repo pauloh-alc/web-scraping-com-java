@@ -19,7 +19,7 @@ public class DownloadFileService {
 			try {
 				
 				url = new URL(elementURL.getHref());
-				File file = new File("/tmp/teste/" + elementURL.getName());
+				File file = new File("/tmp/dir/" + elementURL.getName());
 				FileUtils.copyURLToFile(url, file);
 				
 			} catch (MalformedURLException e1) {
